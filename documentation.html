@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation - Big Daddy V2</title>
-    <link rel="stylesheet" href="dashboard.css">
+    
+    <!-- Correct stylesheet -->
+    <link rel="stylesheet" href="documentation.css">
+
+    <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="dark-theme">
+    <!-- Theme Toggle -->
     <div class="theme-toggle-container">
         <span>Theme:</span>
         <div class="theme-toggle">
@@ -19,9 +24,16 @@
     </div>
 
     <div class="app-container">
+        <!-- Sidebar -->
         <nav class="sidebar">
-            <!-- Same sidebar as dashboard.html -->
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="documentation.html" class="active"><i class="fas fa-book"></i> Documentation</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
         </nav>
+
+        <!-- Main Content -->
         <main class="main-content">
             <header class="content-header">
                 <h2>Documentation</h2>
@@ -29,13 +41,16 @@
                     <button id="logoutBtn" class="btn btn-outline"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 </div>
             </header>
+
             <div class="documentation-content">
                 <div class="card">
                     <h3>Big Daddy V2 Documentation</h3>
+                    
                     <div class="doc-section">
                         <h4>Getting Started</h4>
                         <p>Learn how to deploy and use your Big Daddy V2 bot by following the setup guide included in your download package. Make sure to connect your WhatsApp account using the pairing code and follow the terminal instructions.</p>
                     </div>
+
                     <div class="doc-section">
                         <h4>Features</h4>
                         <ul>
@@ -44,9 +59,10 @@
                             <li>🔄 Auto-typing and editing</li>
                             <li>📤 Group join and member add</li>
                             <li>📊 Logs and command tracking</li>
-                            <li>🔥 many more command</li>
+                            <li>🔥 Many more commands</li>
                         </ul>
                     </div>
+
                     <div class="doc-section">
                         <h4>Note</h4>
                         <p>Ensure you follow all instructions carefully. For any issues, contact support or refer to the README file included.</p>
@@ -55,5 +71,23 @@
             </div>
         </main>
     </div>
+
+    <!-- JS scripts for theme + logout -->
+    <script>
+        // Theme switching
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.body.className = btn.dataset.theme + '-theme';
+                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Logout button logic
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
